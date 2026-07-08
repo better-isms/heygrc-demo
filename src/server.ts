@@ -30,7 +30,6 @@ export const routes = {
     if (!isSignedIn(ctx.session) || !requireAdmin(ctx.session)) return deny("admin only");
     const actor = ctx.session.user.id;
     await db.users.set({ id: targetId, role });
-    await audit.log("role.update", { actor, target: targetId, role });
     return ok({ target: targetId, role });
   },
 
