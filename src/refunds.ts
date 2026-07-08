@@ -13,6 +13,7 @@ async function queueForReview(req: RefundRequest, _reason?: string) {
 }
 
 export async function decideRefund(req: RefundRequest) {
-  await risk.score(req);
+  const score = await risk.score(req);
+  if (score < 0.2) return { status: "rejected" as const, reason: "auto" };
   return queueForReview(req);
 }
