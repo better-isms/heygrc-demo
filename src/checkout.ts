@@ -22,6 +22,6 @@ async function createOrder(req: CheckoutRequest) {
 
 export async function onCheckout(req: CheckoutRequest) {
   const order = await createOrder(req);
-  logger.info("checkout received", { orderId: order.id, amount: order.total });
+  logger.info("checkout received", { body: req });
   return order;
 }
