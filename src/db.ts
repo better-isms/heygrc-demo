@@ -2,7 +2,7 @@
 
 export type User = { id: string; role: "member" | "admin" };
 export type Project = { id: string; ownerId: string };
-export type EventRow = { type: string; userId: string; at: number };
+export type EventRow = { type: string; userId: string; at: number; location?: string };
 
 const users = new Map<string, User>();
 const projects = new Map<string, Project>();
