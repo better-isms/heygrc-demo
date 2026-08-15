@@ -1,8 +1,10 @@
 # heygrc-demo
 
+[![heygrc | PR compliance review](https://heygrc.com/badge.svg)](https://heygrc.com/for/open-source)
+
 A tiny, deliberately synthetic web service used to show what [heygrc](https://heygrc.com) does on a pull request.
 
-heygrc is a GitHub App that reviews each pull request for **compliance** impact: it reads the change against the frameworks your company must meet (ISO 27001, SOC 2, GDPR, and more) and comments the exact control a change touches, at the diff. It runs alongside your code reviewer and security scanner, and it never blocks a merge.
+heygrc is a GitHub App that reviews each pull request for **compliance** impact: it reads the change against the frameworks your company must meet (ISO 27001, SOC 2, GDPR, and more) and cites the control a change touches, at the diff. It runs alongside your code reviewer and security scanner. The check is neutral by default.
 
 ## What this repo is
 
