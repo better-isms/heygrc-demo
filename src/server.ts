@@ -6,6 +6,7 @@ import { audit } from "./audit.js";
 import { requireAdmin, isSignedIn, type Session } from "./auth.js";
 import { track } from "./events.js";
 import { decideRefund, type RefundRequest } from "./refunds.js";
+import { triageTicket as classifyTicket } from "./assist.js";
 
 type Ctx = { session: Session | null };
 
@@ -46,5 +47,12 @@ export const routes = {
     if (!isSignedIn(ctx.session)) return deny("sign in required");
     const decision = await decideRefund(req);
     return ok(decision);
+  },
+
+  // Classify a support ticket with an external LLM.
+  triageTicket: async (ctx: Ctx, ticket: { id: string; from: string; body: string }) => {
+    if (!isSignedIn(ctx.session)) return deny("sign in required");
+    const result = await classifyTicket(ticket);
+    return ok(result);
   },
 };
