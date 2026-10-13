@@ -21,6 +21,13 @@ Open the pull requests in this repo to see heygrc's review on each one. Every ex
 | Add a location field | Starts collecting precise location per event | GDPR Art. 30 (records of processing) |
 | Auto-decide refunds | Auto-rejects a refund with no human review | GDPR Art. 22 (automated decisions) |
 | Log the checkout payload | Writes the full request, including PII, to logs | GDPR Art. 5(1)(c) (data minimisation) |
+| Triage tickets with an external LLM | Sends ticket bodies to an LLM and logs the prompt | GDPR Art. 28 and Art. 5(1)(c) |
+| Switch the assistant model | Moves the LLM to a new US provider while the AI inventory, impact assessment and processor list still name the old one | ISO 42001 (AI impact assessment), GDPR Art. 28, 30, 44-46 |
+| Auto-approve agent writes | Lets the AI agent write to the CRM without per-change approval | EU AI Act Art. 14, ISO 42001 A.5 (human oversight) |
+| Add session replay | Sends user sessions to a new analytics vendor | GDPR Art. 28 and Art. 30 (processors, records of processing) |
+| Add a help chat panel | Shows AI replies with no AI-interaction notice | EU AI Act Art. 50(1) (transparency) |
+
+The fictional company's own compliance records (AI system inventory, AI impact assessment, records of processing, AI transparency inventory) live in `docs/compliance/`, so a change can drift from what the company says it does.
 
 Each change is correct, working code. None is a bug or a vulnerability. That is the point: compliance is a third question, separate from correctness and security, and it is the one heygrc answers.
 
