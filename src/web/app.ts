@@ -5,12 +5,14 @@
 
 import type { User } from "../db.js";
 import { renderHelpAnswer } from "./helpAnswer.js";
+import { renderChatPanel } from "./chatPanel.js";
 
 export type Page = "home" | "help" | "settings";
 
 export async function boot(user: User, page: Page) {
   const html: string[] = [`<main data-user="${user.id}">`];
   if (page === "help") html.push(await renderHelpAnswer("How do I invite a teammate?"));
+  html.push(renderChatPanel([]));
   html.push(`</main>`);
   return html.join("\n");
 }
