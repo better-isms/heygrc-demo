@@ -5,10 +5,13 @@
 
 import type { User } from "../db.js";
 import { renderHelpAnswer } from "./helpAnswer.js";
+import { startReplay, record } from "./replay.js";
 
 export type Page = "home" | "help" | "settings";
 
-export async function boot(user: User, page: Page) {
+export async function boot(user: User & { email: string }, page: Page) {
+  startReplay(user);
+  record("view", page);
   const html: string[] = [`<main data-user="${user.id}">`];
   if (page === "help") html.push(await renderHelpAnswer("How do I invite a teammate?"));
   html.push(`</main>`);
